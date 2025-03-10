@@ -20,8 +20,8 @@ if [[ -n "${DEBUG}" ]]; then set -x; fi
 
 # Mandatory params
 DEVICE_ID=${DEVICE_ID:-'lynx'} # See here for device IDs https://grapheneos.org/releases
-GITHUB_TOKEN=${GITHUB_TOKEN:-''}
-GITHUB_REPO=${GITHUB_REPO:-''}
+GITHUB_TOKEN=${GITHUB_TOKEN:-${{ secrets.GITHUB_TOKEN }}}
+GITHUB_REPO=${GITHUB_REPO:-${{ github.repository }}}
 
 # Optional
 # If you want an OTA patched with magisk, set the preinit for your device
