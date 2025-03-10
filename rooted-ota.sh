@@ -19,15 +19,15 @@ DEBUG=${DEBUG:-''}
 if [[ -n "${DEBUG}" ]]; then set -x; fi
 
 # Mandatory params
-DEVICE_ID=${DEVICE_ID:-'lynx'} # See here for device IDs https://grapheneos.org/releases
+DEVICE_ID=${DEVICE_ID:-} # See here for device IDs https://grapheneos.org/releases
 GITHUB_TOKEN=${GITHUB_TOKEN:-${{ secrets.GITHUB_TOKEN }}}
 GITHUB_REPO=${GITHUB_REPO:-${{ github.repository }}}
 
 # Optional
 # If you want an OTA patched with magisk, set the preinit for your device
-MAGISK_PREINIT_DEVICE=${MAGISK_PREINIT_DEVICE:-'sda8'}
+MAGISK_PREINIT_DEVICE=${MAGISK_PREINIT_DEVICE:-}
 # Skip creation of rootless OTA by setting to "true"
-SKIP_ROOTLESS=${SKIP_ROOTLESS:-'true'}
+SKIP_ROOTLESS=${SKIP_ROOTLESS:-''}
 # https://grapheneos.org/releases#stable-channel
 OTA_VERSION=${OTA_VERSION:-'latest'}
 
@@ -36,7 +36,7 @@ OTA_VERSION=${OTA_VERSION:-'latest'}
 # Find latest magisk version here: https://github.com/topjohnwu/Magisk/releases, or:
 # curl --fail -sL -I -o /dev/null -w '%{url_effective}' https://github.com/topjohnwu/Magisk/releases/latest | sed 's/.*\/tag\///;'
 # renovate: datasource=github-releases packageName=topjohnwu/Magisk versioning=semver-coerced
-DEFAULT_MAGISK_VERSION=kitsune-27001
+DEFAULT_MAGISK_VERSION='kitsune-27001'
 MAGISK_VERSION=${MAGISK_VERSION:-${DEFAULT_MAGISK_VERSION}}
 
 SKIP_CLEANUP=${SKIP_CLEANUP:-''}
